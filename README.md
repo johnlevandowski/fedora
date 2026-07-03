@@ -1,10 +1,14 @@
 Fedora Installation
 ===================
 
-[Fedora Workstation 44](https://fedoraproject.org/workstation/download/)
+* [Fedora Workstation 44](https://fedoraproject.org/workstation/download/)
+* Installation Method = Use entire disk
+* Enable third-party repositories
 
 ```
 sudo dnf update
+sudo timedatectl set-local-rtc 0
+git clone https://github.com/johnlevandowski/fedora $HOME/Documents/GitHub/fedora
 ```
 
 
@@ -62,6 +66,7 @@ flatpak install flathub it.mijorus.gearlever
 Settings
 --------
 
+Displays
 Dark mode
 
 
@@ -84,8 +89,26 @@ flatpak install flathub com.mattjakeman.ExtensionManager
 * Dash to Panel Settings > Show Applications button = OFF
 
 
+Samba Mounts
+------------
+
+```
+sudo cp $HOME/Documents/GitHub/fedora/files/etc/samba/.smbcredentials /etc/samba/
+sudo micro /etc/samba/.smbcredentials
+```
+
+```
+sudo chmod 600 /etc/samba/.smbcredentials
+sudo mkdir -p /mnt/rpi5
+sudo cp $HOME/Documents/GitHub/fedora/files/etc/systemd/system/mnt-rpi5.mount /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable --now mnt-rpi5.mount
+sudo chown -R $USER:$USER /mnt/rpi5
+```
+
+
 Moonlight
-=========
+---------
 
 ```
 flatpak install flathub com.moonlight_stream.Moonlight

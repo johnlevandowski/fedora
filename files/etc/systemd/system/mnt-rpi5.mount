@@ -1,0 +1,11 @@
+[Unit]
+Description=Mount rpi5 share (/mnt/rpi5)
+
+[Mount]
+What=//rpi5.lan.johnl.dev/share
+Where=/mnt/rpi5
+Type=cifs
+Options=credentials=/etc/samba/.smbcredentials,_netdev,uid=1000,gid=1000,iocharset=utf8,defaults,exec,rw,noatime
+
+[Install]
+WantedBy=multi-user.target
