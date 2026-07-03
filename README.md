@@ -1,6 +1,7 @@
 Fedora Installation
 ===================
 
+[Fedora Workstation 44](https://fedoraproject.org/workstation/download/)
 
 ```
 sudo dnf update
@@ -26,6 +27,7 @@ sudo dnf install rpmfusion-\*-appstream-data
 
 ```
 sudo dnf install mesa-va-drivers-freeworld
+sudo dnf install mesa-va-drivers-freeworld.i686
 ```
 
 
@@ -48,15 +50,19 @@ sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flat
 ```
 
 
-AppImage Support
-----------------
-
-Only if needed
+AppImage Support (if needed)
+----------------------------
 
 ```
 sudo dnf install fuse-libs
-flatpak install it.mijorus.gearlever
+flatpak install flathub it.mijorus.gearlever
 ```
+
+
+Settings
+--------
+
+Dark mode
 
 
 Gnome Tweaks and Extensions
@@ -71,6 +77,18 @@ flatpak install flathub com.mattjakeman.ExtensionManager
 * Tweaks > Windows > Minimize = ON
 * Extension Manager > Installed > Background Logo = OFF  
 * Extension Manager > Browse  
-  * Dash to Dock or Dash to Panel
   * AppIndicator and KStatusNotifierItem Support
+  * ArcMenu
+  * Dash to Panel
+* ArcMenu Settings > Menu Buttons > Icon > Icon Size = 48
+* Dash to Panel Settings > Show Applications button = OFF
+
+
+Moonlight
+=========
+
+```
+flatpak install flathub com.moonlight_stream.Moonlight
+flatpak install flathub org.freedesktop.Platform.GL.default//22.08-extra (if needed)
+```
 
