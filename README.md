@@ -63,6 +63,15 @@ flatpak install flathub it.mijorus.gearlever
 ```
 
 
+Applications
+------------
+
+```
+sudo dnf install micro rclone
+flatpak install flathub io.github.pol_rivero.github-desktop-plus
+```
+
+
 Settings
 --------
 
