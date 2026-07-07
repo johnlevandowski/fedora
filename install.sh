@@ -1,0 +1,50 @@
+#!/bin/sh
+
+# Upgrade packages
+sudo dnf upgrade
+
+# Set real time clock to UTC
+sudo timedatectl set-local-rtc 0
+
+# Set default shell to fish
+chsh -s /bin/fish
+
+# Multimedia - https://rpmfusion.org/Howto/Multimedia
+sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1
+sudo dnf swap ffmpeg-free ffmpeg --allowerasing
+sudo dnf install @multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
+sudo dnf update @core
+sudo dnf install rpmfusion-\*-appstream-data
+
+# AMD Drivers
+sudo dnf install mesa-va-drivers-freeworld mesa-va-drivers-freeworld.i686
+
+# Firmware Updates
+fwupdmgr refresh --force
+fwupdmgr get-devices
+fwupdmgr get-updates
+fwupdmgr update
+
+# Flathub Repository
+sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+# Packages
+sudo dnf install \
+cascadia-code-nf-fonts \
+dust \
+eza \
+fastfetch \
+fish \
+gh \
+gnome-tweaks \
+gnucash \
+micro \
+podman podman-compose \
+rclone
+
+# Flatpaks
+flatpak install flathub com.mattjakeman.ExtensionManager
+flatpak install flathub io.github.pol_rivero.github-desktop-plus
+flatpak install flathub io.podman_desktop.PodmanDesktop
+

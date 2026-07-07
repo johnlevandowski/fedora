@@ -6,43 +6,9 @@ Fedora Installation
 * Enable third-party repositories
 
 ```
-sudo dnf update
-sudo timedatectl set-local-rtc 0
 git clone https://github.com/johnlevandowski/fedora $HOME/Documents/GitHub/fedora
-```
-
-
-Multimedia
-----------
-
-https://rpmfusion.org/Howto/Multimedia
-
-```
-sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1
-```
-
-```
-sudo dnf swap ffmpeg-free ffmpeg --allowerasing
-sudo dnf install @multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
-sudo dnf update @core
-sudo dnf install rpmfusion-\*-appstream-data
-```
-
-```
-sudo dnf install mesa-va-drivers-freeworld
-sudo dnf install mesa-va-drivers-freeworld.i686
-```
-
-
-Firmware Updates
-----------------
-
-```
-fwupdmgr refresh --force
-fwupdmgr get-devices
-fwupdmgr get-updates
-fwupdmgr update
+chmod +x $HOME/Documents/GitHub/fedora/install.sh
+$HOME/Documents/GitHub/fedora/install.sh
 ```
 
 
@@ -52,83 +18,30 @@ Samba Mounts
 ```
 sudo cp $HOME/Documents/GitHub/fedora/files/etc/samba/.smbcredentials /etc/samba/
 sudo micro /etc/samba/.smbcredentials
-
 ```
 
 ```
 sudo chmod 600 /etc/samba/.smbcredentials
 sudo mkdir -p /mnt/rpi5
-
 sudo cp $HOME/Documents/GitHub/fedora/files/etc/systemd/system/mnt-rpi5.mount /etc/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl enable --now mnt-rpi5.mount
 sudo chown -R $USER:$USER /mnt/rpi5
-
-```
-
-
-Flathub Repository
-------------------
-
-```
-sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-```
-
-
-AppImage Support (if needed)
-----------------------------
-
-```
-sudo dnf install fuse-libs
-flatpak install flathub it.mijorus.gearlever
-```
-
-
-Applications
-------------
-
-```
-sudo dnf install \
-alacritty \
-cascadia-code-nf-fonts \
-dust \
-eza \
-fastfetch \
-fish \
-gh \
-gnucash \
-micro \
-rclone
-```
-
-```
-flatpak install flathub io.github.pol_rivero.github-desktop-plus
-```
-
-
-Games
------
-
-```
-sudo dnf install steam
-```
-
-The first time you run Steam, it will update itself to the latest version.  This process can take some time.  
-
-```
-sudo dnf -y copr enable faugus/faugus-launcher
-sudo dnf -y install faugus-launcher
 ```
 
 
 Settings
 --------
 
-* Displays
+```
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+gsettings set org.gnome.desktop.peripherals.mouse speed 1.0
+gsettings set org.gnome.desktop.peripherals.mouse accel-profile 'flat'
+gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
+```
+
+* Displays - Variable Refresh Rate, HDR, Scaling
 * Power > Performance
-* Appearance > Style > Dark
-* Mouse & Touchpad > Mouse > Pointer Speed = Fast
-* Mouse & Touchpad > Mouse > Mouse Acceleration = OFF
 * System > About > Device Name = fedora-b850
 
 https://github.com/johnlevandowski/dotfiles#restore-dotfiles-from-git-repository  
@@ -137,13 +50,6 @@ https://github.com/johnlevandowski/dotfiles#restore-dotfiles-from-git-repository
 Gnome Tweaks and Extensions
 ---------------------------
 
-```
-sudo dnf install gnome-tweaks
-flatpak install flathub com.mattjakeman.ExtensionManager
-```
-
-* Tweaks > Windows > Maximize = ON
-* Tweaks > Windows > Minimize = ON
 * Extension Manager > Installed > Background Logo = OFF
 * Extension Manager > Browse
   * AppIndicator and KStatusNotifierItem Support
@@ -160,6 +66,41 @@ GnuCash
 ```
 mkdir -p /home/john/Documents/gnucash
 cp /mnt/rpi5/Documents/gnucash/finances.gnucash /home/john/Documents/gnucash/
+```
+
+
+AppImage Support (if needed)
+----------------------------
+
+```
+sudo dnf install fuse-libs
+flatpak install flathub it.mijorus.gearlever
+```
+
+
+Games
+-----
+
+```
+sudo dnf install steam gamescope
+```
+
+The first time you run Steam, it will update itself to the latest version.  This process can take some time.  
+
+```
+sudo dnf copr enable faugus/faugus-launcher
+
+sudo dnf install faugus-launcher
+```
+
+
+Gamescope Steam launch options
+------------------------------
+
+When using display scaling, many games don't scale/full screen correctly.  Gamescope seems to be the recommended solution.  
+
+```
+gamescope -w 2560 -h 1440 -W 2560 -H 1440 -r 180 --fullscreen --hdr-enabled --adaptive-sync -- %command%
 ```
 
 
