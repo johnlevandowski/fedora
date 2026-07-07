@@ -2,7 +2,7 @@ Fedora Installation
 ===================
 
 * [Fedora Workstation 44](https://fedoraproject.org/workstation/download/)
-* Installation Method = Use entire disk
+* [BTRFS Snapshot and Rollback Support](https://sysguides.com/fedora-44-with-btrfs-snapshot-and-rollback-support)
 * Enable third-party repositories
 
 ```
@@ -89,7 +89,6 @@ The first time you run Steam, it will update itself to the latest version.  This
 
 ```
 sudo dnf copr enable faugus/faugus-launcher
-
 sudo dnf install faugus-launcher
 ```
 

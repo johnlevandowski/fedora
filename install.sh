@@ -39,6 +39,7 @@ fish \
 gh \
 gnome-tweaks \
 gnucash \
+libreoffice \
 micro \
 podman podman-compose \
 rclone
@@ -47,4 +48,11 @@ rclone
 flatpak install flathub com.mattjakeman.ExtensionManager
 flatpak install flathub io.github.pol_rivero.github-desktop-plus
 flatpak install flathub io.podman_desktop.PodmanDesktop
+
+# LibreOffice Start Center Icon
+desktop-file-install \
+    --dir=${HOME}/.local/share/applications \
+    --remove-key=NoDisplay \
+    /usr/share/applications/libreoffice-startcenter.desktop
+
 
