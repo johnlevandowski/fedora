@@ -55,4 +55,16 @@ desktop-file-install \
     --remove-key=NoDisplay \
     /usr/share/applications/libreoffice-startcenter.desktop
 
+# Rclone - remove 'NOTICE: Config file "/home/john/.config/rclone/rclone.conf" not found - using defaults'
+rclone config touch
+
+# Gnome desktop settings
+# Appearance > Style = Dark
+# Mouse & Touchpad > Mouse > Pointer Speed = Fast
+# Mouse & Touchpad > Mouse > Mouse Acceleration = OFF
+# Tweaks > Windows > Titlebar Buttons > All ON
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+gsettings set org.gnome.desktop.peripherals.mouse speed 1.0
+gsettings set org.gnome.desktop.peripherals.mouse accel-profile 'flat'
+gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
 

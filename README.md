@@ -33,13 +33,6 @@ sudo chown -R $USER:$USER /mnt/rpi5
 Settings
 --------
 
-```
-gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-gsettings set org.gnome.desktop.peripherals.mouse speed 1.0
-gsettings set org.gnome.desktop.peripherals.mouse accel-profile 'flat'
-gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
-```
-
 * Displays - Variable Refresh Rate, HDR, Scaling
 * Power > Performance
 * System > About > Device Name = fedora-b850
