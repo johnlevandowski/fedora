@@ -42,6 +42,7 @@ gnucash \
 libreoffice \
 micro \
 podman podman-compose \
+qalculate-gtk \
 rclone
 
 # Flatpaks
