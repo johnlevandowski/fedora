@@ -47,8 +47,8 @@ rclone
 
 # Flatpaks
 flatpak install flathub com.mattjakeman.ExtensionManager
-flatpak install flathub io.github.pol_rivero.github-desktop-plus
 flatpak install flathub io.podman_desktop.PodmanDesktop
+flatpak install flathub org.desktop_plus.desktop-plus
 
 # LibreOffice Start Center Icon
 desktop-file-install \
