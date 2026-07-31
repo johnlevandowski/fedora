@@ -105,24 +105,6 @@ flatpak install flathub org.freedesktop.Platform.GL.default//22.08-extra (if nee
 ```
 
 
-SSH Server
-----------
-
-```
-sudo dnf install openssh-server
-```
-
-```
-sudo firewall-cmd --add-service=ssh --permanent
-sudo firewall-cmd --reload
-```
-
-```
-sudo systemctl enable --now sshd
-sudo systemctl status sshd
-```
-
-
 Firewall
 --------
 
@@ -138,54 +120,4 @@ sudo firewall-cmd --list-all --permanent
 sudo firewall-cmd --remove-port=1025-65535/tcp --permanent 
 sudo firewall-cmd --remove-port=1025-65535/udp --permanent 
 sudo firewall-cmd --reload
-```
-
-
-Cockpit
--------
-
-```
-sudo firewall-cmd --add-service=cockpit --permanent
-sudo firewall-cmd --reload
-```
-
-```
-sudo systemctl enable --now cockpit.socket
-sudo systemctl status cockpit.socket
-```
-
-Access on port 9090
-
-
-Disable systemd-resolved stub listener
---------------------------------------
-
-```
-sudo mkdir /etc/systemd/resolved.conf.d
-sudo micro /etc/systemd/resolved.conf.d/stub-listener.conf
-```
-
-```
-[Resolve]
-DNSStubListener=no
-```
-
-```
-sudo systemctl restart systemd-resolved.service
-```
-
-
-Podman user ports
------------------
-
-```
-sudo micro /etc/sysctl.d/99-podman-ports.conf
-```
-
-```
-net.ipv4.ip_unprivileged_port_start=53
-```
-
-```
-sudo sysctl --system
 ```
