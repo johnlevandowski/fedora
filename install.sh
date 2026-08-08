@@ -6,9 +6,6 @@ sudo dnf upgrade
 # Set real time clock to UTC
 sudo timedatectl set-local-rtc 0
 
-# Set default shell to fish
-chsh -s /bin/fish
-
 # Multimedia - https://rpmfusion.org/Howto/Multimedia
 sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1
@@ -31,11 +28,7 @@ sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flat
 
 # Packages
 sudo dnf install \
-cascadia-code-nf-fonts \
-dust \
-eza \
 fastfetch \
-fish \
 gh \
 gnome-tweaks \
 gnucash \
@@ -46,7 +39,6 @@ rclone
 
 # Flatpaks
 flatpak install flathub com.mattjakeman.ExtensionManager
-flatpak install flathub io.podman_desktop.PodmanDesktop
 flatpak install flathub org.desktop_plus.desktop-plus
 
 # LibreOffice Start Center Icon
@@ -67,4 +59,3 @@ gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 gsettings set org.gnome.desktop.peripherals.mouse speed 1.0
 gsettings set org.gnome.desktop.peripherals.mouse accel-profile 'flat'
 gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
-

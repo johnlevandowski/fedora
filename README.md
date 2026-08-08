@@ -12,8 +12,7 @@ $HOME/Documents/GitHub/fedora/install.sh
 ```
 
 
-Samba Mounts
-------------
+## Samba Mounts
 
 ```
 sudo cp $HOME/Documents/GitHub/fedora/files/etc/samba/.smbcredentials /etc/samba/
@@ -30,8 +29,7 @@ sudo chown -R $USER:$USER /mnt/rpi5
 ```
 
 
-Settings
---------
+## Settings
 
 * Displays - Variable Refresh Rate, HDR, Scaling
 * Power > Performance
@@ -40,8 +38,7 @@ Settings
 https://github.com/johnlevandowski/dotfiles#restore-dotfiles-from-git-repository  
 
 
-Gnome Tweaks and Extensions
----------------------------
+## Gnome Tweaks and Extensions
 
 * Extension Manager > Installed > Background Logo = OFF
 * Extension Manager > Browse
@@ -53,8 +50,7 @@ Gnome Tweaks and Extensions
 * Dash to Panel Settings > Show Applications button = OFF
 
 
-GnuCash
--------
+## GnuCash
 
 ```
 mkdir -p /home/john/Documents/gnucash
@@ -62,8 +58,7 @@ cp /mnt/rpi5/Documents/gnucash/finances.gnucash /home/john/Documents/gnucash/
 ```
 
 
-AppImage Support (if needed)
-----------------------------
+## AppImage Support (if needed)
 
 ```
 sudo dnf install fuse-libs
@@ -71,42 +66,7 @@ flatpak install flathub it.mijorus.gearlever
 ```
 
 
-Games
------
-
-```
-sudo dnf install steam gamescope
-```
-
-The first time you run Steam, it will update itself to the latest version.  This process can take some time.  
-
-```
-sudo dnf copr enable faugus/faugus-launcher
-sudo dnf install faugus-launcher
-```
-
-
-Gamescope Steam launch options
-------------------------------
-
-When using display scaling, many games don't scale/full screen correctly.  Gamescope seems to be the recommended solution.  
-
-```
-gamescope -w 2560 -h 1440 -W 2560 -H 1440 -r 180 --fullscreen --hdr-enabled --adaptive-sync -- %command%
-```
-
-
-Moonlight
----------
-
-```
-flatpak install flathub com.moonlight_stream.Moonlight
-flatpak install flathub org.freedesktop.Platform.GL.default//22.08-extra (if needed)
-```
-
-
-Firewall
---------
+## Firewall
 
 ```
 sudo ss -tulpn
